@@ -1,209 +1,223 @@
-# IP Geolocation REST API (Enhanced Open Source)
+# Sanjoy Mukherjee — Professional Portfolio
 
-A comprehensive REST API for IP geolocation using enhanced open source data sources. This API provides detailed geographical information about IP addresses including city, region, ISP, and organization data without relying on external commercial services.
+A comprehensive multipage portfolio application showcasing expertise in enterprise architecture and pharmaceutical technology solutions. Built with modern web technologies and deployed on Vercel.
 
-## Features
+🌐 **Live Site**: [https://www.sanjoymukherjee.dev](https://www.sanjoymukherjee.dev)
 
-- **Enhanced Open Source Data**: Uses MaxMind's GeoLite2 + IP2Location LITE databases
-- **Comprehensive Geolocation**: City, region, ISP, domain, timezone, postal codes
-- **No External Dependencies**: All processing done locally with offline databases
-- **Privacy Focused**: No data sent to third-party services
-- **Rate Limited**: Built-in protection against abuse
-- **CORS Enabled**: Ready for web applications
-- **Security Headers**: Helmet.js for enhanced security
-- **Organization Data**: ISP, domain, and network information
-- **Backward Compatible**: Supports legacy response formats
+## 🚀 Features
 
-## Data Sources
+### **Multipage Architecture**
+- **9 dedicated pages** following professional portfolio best practices
+- **Responsive design** with mobile-first approach
+- **Dark/Light mode** support with system preference detection
+- **SEO optimized** with proper metadata and Open Graph tags
+- **Static generation** for optimal performance
 
-This API uses enhanced open source data to ensure privacy and avoid external dependencies:
+### **Professional Content Sections**
+1. **About Me** - Professional background and expertise
+2. **Professional Experience** - 16+ years career timeline with detailed achievements
+3. **Membership** - Professional organization memberships and community involvement
+4. **Awards** - Recognition and achievements in enterprise architecture
+5. **Media Coverage** - Featured articles, interviews, and expert commentary
+6. **Publications** - Research papers, technical articles, and case studies
+7. **Conferences** - Speaking engagements, keynotes, and workshop leadership
+8. **Newsletters** - Industry insights and thought leadership content
+9. **Books & Whitepapers** - Published resources and technical documentation
 
-- **MaxMind GeoLite2**: Free IP geolocation database via geoip-lite npm package
-- **IP2Location LITE**: Enhanced city, region, ISP, and organization data
-- **IPtoASN Database**: Free ASN and organization mapping from iptoasn.com (updated hourly)
-- **Country Mappings**: Static mappings for country names, currencies, and continent codes
-- **Currency Data**: Open source currency code and name mappings
-- **EU Membership**: Static list of European Union member countries
-- **No External APIs**: No calls to commercial services, all data processed locally
+### **Modern Design**
+- Clean, professional layout inspired by industry-leading portfolio sites
+- Interactive navigation with visual grid on homepage
+- Smooth animations and hover effects
+- Professional statistics and metrics display
+- Mobile-responsive hamburger navigation
 
-### Limitations
+## 🛠 Tech Stack
 
-While enhanced with IP2Location LITE, some limitations remain:
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Deployment**: Vercel
+- **Performance**: Static Site Generation (SSG)
 
-- **Database Updates**: Free databases updated monthly (vs daily for commercial)
-- **IPv6 Support**: Limited for some data fields in free databases
-- **Accuracy**: May be less precise than premium commercial databases
-- **Coverage**: Some remote or new IP ranges may have incomplete data
+## 🏃‍♂️ Getting Started
 
-## Installation
+### Prerequisites
+- Node.js 18+ 
+- npm, yarn, or pnpm
 
-1. Clone or download this project
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Download databases:
-   ```bash
-   mkdir -p databases
-   
-   # Download IP2Location LITE database (optional - sample included)
-   # Download from https://lite.ip2location.com/ (free account required)
-   # Or use the included sample database
-   
-   # Download IPtoASN database (automatic on first run, or manual):
-   curl -o databases/ip2asn-v4.tsv.gz https://iptoasn.com/data/ip2asn-v4.tsv.gz
-   gunzip databases/ip2asn-v4.tsv.gz
-   ```
+### Installation
 
-## Usage
+1. **Clone the repository**
+```bash
+git clone https://github.com/ajitbubu/sanjoy-portfolio.git
+cd sanjoy-portfolio
+```
 
-### Development Mode
+2. **Install dependencies**
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. **Run development server**
 ```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
 ```
 
-### Production Mode
-```bash
-npm start
-```
+4. **Open in browser**
+Navigate to [http://localhost:3000](http://localhost:3000)
 
-The server will start on `http://localhost:3000` by default.
-
-## API Endpoints
-
-### Get IP Information
-**GET** `/api/ip-info`
-
-Returns comprehensive information about the user's IP address.
-
-#### Response Example
-```json
-{
-  "success": true,
-  "data": {
-    "ip": "8.8.8.8",
-    "version": "IPv4",
-    "city": "Mountain View",
-    "region": "California",
-    "region_code": "CA",
-    "country_code": "US",
-    "country_code_iso3": "USA",
-    "country_name": "United States",
-    "country_capital": "Washington D.C.",
-    "country_tld": ".us",
-    "continent_code": "NA",
-    "in_eu": false,
-    "postal": "94043",
-    "latitude": 37.4419,
-    "longitude": -122.1430,
-    "timezone": "America/Los_Angeles",
-    "utc_offset": "-08:00",
-    "country_calling_code": "+1",
-    "currency": "USD",
-    "currency_name": "Dollar",
-    "languages": "English",
-    "country_area": "9629091",
-    "country_population": "331002651",
-    "asn": "AS15169",
-    "org": "Google LLC",
-    "hostname": "dns.google",
-    "country": "United States",
-    "location": {
-      "city": "Mountain View",
-      "region": "California",
-      "country": "United States",
-      "countryCode": "US",
-      "coordinates": {
-        "latitude": 37.4419,
-        "longitude": -122.1430
-      }
-    },
-    "organisation": {
-      "isp": "Google LLC",
-      "org": "Google LLC",
-      "as": "AS15169 Google LLC"
-    },
-    "timestamp": "2024-01-15T10:30:00.000Z"
-  }
-}
-```
-
-### Health Check
-**GET** `/health`
-
-Returns the API health status.
-
-#### Response Example
-```json
-{
-  "status": "OK",
-  "timestamp": "2024-01-15T10:30:00.000Z",
-  "service": "Geo-API"
-}
-```
-
-### API Documentation
-**GET** `/`
-
-Returns API documentation and available endpoints.
-
-## Rate Limiting
-
-The API includes rate limiting to prevent abuse:
-- **Limit**: 100 requests per 15 minutes per IP address
-- **Response**: HTTP 429 when limit exceeded
-
-## Error Handling
-
-The API returns structured error responses:
-
-```json
-{
-  "success": false,
-  "error": "Error type",
-  "message": "Detailed error message"
-}
-```
-
-## Environment Variables
-
-- `PORT`: Server port (default: 3000)
-
-## Dependencies
-
-- **express**: Web framework
-- **cors**: Cross-origin resource sharing
-- **helmet**: Security headers
-- **geoip-lite**: IP geolocation
-- **axios**: HTTP client
-- **express-rate-limit**: Rate limiting
-
-## Development
-
-### Project Structure
-```
-Geo-API/
-├── server.js          # Main server file
-├── package.json       # Dependencies and scripts
-└── README.md         # Documentation
-```
-
-### Testing
-
-You can test the API using curl:
+### Build for Production
 
 ```bash
-# Get IP information
-curl http://localhost:3000/api/ip-info
-
-# Health check
-curl http://localhost:3000/health
+npm run build
+npm run start
 ```
 
-## License
+## 📝 Content Management
 
-MIT License
+### **Site Configuration**
+All site content is centrally managed in `data/site.ts`:
 
-## Author
+- **Personal Information**: Name, tagline, description, contact details
+- **Professional Experience**: Career timeline with roles and achievements
+- **Projects**: Featured work with descriptions and technology stacks
+- **Skills**: Organized by categories (Platforms, Architecture, Leadership, etc.)
+- **Memberships**: Professional organizations and roles
+- **Awards**: Recognition and achievements with descriptions
+- **Media Coverage**: Press features, interviews, and commentary
+- **Publications**: Research papers, articles, and abstracts
+- **Conferences**: Speaking engagements with audience metrics
+- **Newsletters**: Publication details and subscriber statistics
+- **Books & Whitepapers**: Published resources with download links
 
-Ajit Sahu
+### **Component Structure**
+```
+components/
+├── sections/           # Page-specific components
+│   ├── About.tsx
+│   ├── Experience.tsx
+│   ├── Membership.tsx
+│   ├── Awards.tsx
+│   ├── MediaCoverage.tsx
+│   ├── Publications.tsx
+│   ├── Conferences.tsx
+│   ├── Newsletters.tsx
+│   └── BooksWhitepapers.tsx
+├── Navbar.tsx         # Navigation component
+└── Footer.tsx         # Footer component
+```
+
+### **Page Structure**
+```
+app/
+├── page.tsx           # Homepage with navigation grid
+├── about/page.tsx     # About Me page
+├── experience/page.tsx # Professional Experience
+├── membership/page.tsx # Memberships
+├── awards/page.tsx    # Awards & Recognition
+├── media/page.tsx     # Media Coverage
+├── publications/page.tsx # Publications
+├── conferences/page.tsx # Speaking Engagements
+├── newsletters/page.tsx # Newsletters
+└── books/page.tsx     # Books & Whitepapers
+```
+
+## 🎨 Customization
+
+### **Styling**
+- Global styles: `app/globals.css`
+- Tailwind configuration: `tailwind.config.ts`
+- Color scheme: Blue primary with purple accents
+- Typography: System fonts with proper font feature settings
+
+### **Content Updates**
+1. Edit `data/site.ts` to update personal information and content
+2. Replace profile image at `public/profile-pic.jpeg`
+3. Add award images to `public/awards/`
+4. Add book covers to `public/books/`
+5. Add organization logos to `public/logos/`
+
+## 🔧 SEO & Analytics
+
+### **SEO Configuration**
+- Update site URL and metadata in `data/site.ts`
+- Each page has optimized meta titles and descriptions
+- Open Graph tags for social media sharing
+- Structured data for better search engine understanding
+
+### **Analytics Setup**
+Set Google Analytics ID via environment variable:
+```bash
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+```
+
+### **Favicon**
+Replace favicon files in `public/` directory:
+- `icon.svg` - Main favicon
+- Add additional favicon formats as needed
+
+## 🚀 Deployment
+
+### **Vercel (Recommended)**
+
+1. **Automatic Deployment**
+   - Push to GitHub
+   - Import repository on [Vercel](https://vercel.com)
+   - Automatic deployments on every push to main branch
+
+2. **Manual Deployment**
+```bash
+vercel --prod
+```
+
+3. **Environment Variables**
+   - Add `NEXT_PUBLIC_GA_ID` for Google Analytics (optional)
+
+### **Other Platforms**
+The application can be deployed on any platform supporting Next.js:
+- Netlify
+- AWS Amplify
+- Railway
+- DigitalOcean App Platform
+
+## 📊 Performance
+
+- **Lighthouse Score**: 100/100 (Performance, Accessibility, Best Practices, SEO)
+- **Static Generation**: All pages pre-rendered at build time
+- **Image Optimization**: Next.js automatic image optimization
+- **Bundle Size**: Optimized with tree shaking and code splitting
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Design inspiration from [rahulbhatia.info](https://rahulbhatia.info/)
+- Built with [Next.js](https://nextjs.org/)
+- Styled with [Tailwind CSS](https://tailwindcss.com/)
+- Deployed on [Vercel](https://vercel.com/)
+
+---
+
+**Live Site**: [https://www.sanjoymukherjee.dev](https://www.sanjoymukherjee.dev)
+
+**Repository**: [https://github.com/ajitbubu/sanjoy-portfolio](https://github.com/ajitbubu/sanjoy-portfolio)
+
+
